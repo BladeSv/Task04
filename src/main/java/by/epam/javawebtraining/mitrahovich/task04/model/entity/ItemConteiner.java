@@ -8,7 +8,7 @@ import org.apache.log4j.Logger;
 import by.epam.javawebtraining.mitrahovich.task04.model.logic.strategy.Strategy;
 import by.epam.javawebtraining.mitrahovich.task04.model.parser.Parser;
 
-public class ItemConteiner implements Treatment {
+public abstract class ItemConteiner implements Treatment {
 	private static Logger logger = Logger.getRootLogger();
 	private String content = "";
 	private List<Treatment> conteiner;
@@ -54,20 +54,7 @@ public class ItemConteiner implements Treatment {
 		this.next = next;
 	}
 
-	public void parsing(String text) {
-		logger.trace("parser=" + parser + "text to parse=" + text);
-		if (text != null && text != "") {
-			content = text;
-			String[] str = parser.parse(text);
-			for (String s : str) {
-				logger.trace("parser=" + parser + "text after parse=" + text);
-				Treatment temp = new ItemConteiner(next);
-				temp.parsing(s);
-				conteiner.add(temp);
-			}
-
-		}
-	}
+	public abstract void parsing(String text);
 
 	public String collect() {
 		return strategy.process(this.parser, this.content);

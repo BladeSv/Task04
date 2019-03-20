@@ -1,12 +1,38 @@
 package by.epam.javawebtraining.mitrahovich.task04.model.entity;
 
 import by.epam.javawebtraining.mitrahovich.task04.model.logic.strategy.Strategy;
+import by.epam.javawebtraining.mitrahovich.task04.model.parser.Parser;
 
-public class Item implements Treatment {
+public class Item implements Treatment, Cloneable {
 	private String content;
+	private Strategy strategy;
+
+	private Parser parser;
+
+	private Item next;
 
 	public Item() {
 
+	}
+
+	public Item(Item item) {
+
+	}
+
+	public Parser getParser() {
+		return parser;
+	}
+
+	public void setParser(Parser parser) {
+		this.parser = parser;
+	}
+
+	public Item getNext() {
+		return next;
+	}
+
+	public void setNext(Item next) {
+		this.next = next;
 	}
 
 	public void parsing(String text) {
@@ -49,8 +75,13 @@ public class Item implements Treatment {
 	}
 
 	public void setStategy(Strategy strategy) {
-		// TODO Auto-generated method stub
+		this.strategy = strategy;
+	}
 
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+
+		return super.clone();
 	}
 
 }
