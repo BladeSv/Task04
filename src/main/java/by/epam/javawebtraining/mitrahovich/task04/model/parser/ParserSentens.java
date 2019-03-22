@@ -1,32 +1,36 @@
 package by.epam.javawebtraining.mitrahovich.task04.model.parser;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
-public class ParserWord extends Parser {
+public class ParserSentens extends Parser {
 
-	public ParserWord() {
-		super(ParserType.WORD);
+	public ParserSentens() {
+		super(ParserType.SENTENS);
 	}
 
 	@Override
-	public String[] parse(String text) {
+	public List<String> parse(String text) {
 		if (text != null && text.length() > 1) {
 
-			Pattern p = Pattern.compile(" ");
+			Pattern p = Pattern.compile("[ ]");
 			String[] temp = p.split(text);
+
 			ArrayList<String> tempList = new ArrayList<>();
-			for (int i = 0; i < temp.length; i++) {
-				if (temp[i].length() != 1) {
-					System.out.println(i);
-					tempList.add(temp[i]);
+
+			if (temp[0] != null && temp[0].length() > 0) {
+				tempList.add(temp[0]);
+			}
+			for (int i = 1; i < temp.length; i++) {
+				if (temp[i] != null && temp[i].length() > 0) {
 					tempList.add(" ");
+					tempList.add(temp[i]);
 
 				}
-
 			}
 
-			return tempList.toArray(new String[tempList.size()]);
+			return tempList;
 
 		}
 		return null;

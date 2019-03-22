@@ -1,11 +1,9 @@
 package by.epam.javawebtraining.mitrahovich.task04.model.entity;
 
-import by.epam.javawebtraining.mitrahovich.task04.model.logic.strategy.Strategy;
 import by.epam.javawebtraining.mitrahovich.task04.model.parser.Parser;
 
 public class Item implements Treatment, Cloneable {
 	private String content;
-	private Strategy strategy;
 
 	private Parser parser;
 
@@ -71,11 +69,8 @@ public class Item implements Treatment, Cloneable {
 
 	@Override
 	public String toString() {
+		// System.out.println("Item-" + content);
 		return content;
-	}
-
-	public void setStategy(Strategy strategy) {
-		this.strategy = strategy;
 	}
 
 	@Override

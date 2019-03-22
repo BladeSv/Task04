@@ -2,11 +2,13 @@ package by.epam.javawebtraining.mitrahovich.task04.controller;
 
 import by.epam.javawebtraining.mitrahovich.task04.io.WorkerTextFile;
 import by.epam.javawebtraining.mitrahovich.task04.model.entity.Item;
-import by.epam.javawebtraining.mitrahovich.task04.model.entity.ItemConteinerTemp;
+import by.epam.javawebtraining.mitrahovich.task04.model.entity.ItemConteiner;
 import by.epam.javawebtraining.mitrahovich.task04.model.parser.Parser;
 import by.epam.javawebtraining.mitrahovich.task04.model.parser.ParserParagraph;
+import by.epam.javawebtraining.mitrahovich.task04.model.parser.ParserSentens;
 import by.epam.javawebtraining.mitrahovich.task04.model.parser.ParserText;
-import by.epam.javawebtraining.mitrahovich.task04.model.parser.ParserWord;
+import by.epam.javawebtraining.mitrahovich.task04.view.ConsolePrinter;
+import by.epam.javawebtraining.mitrahovich.task04.view.Printer;
 
 public class Controller {
 
@@ -15,20 +17,30 @@ public class Controller {
 	}
 
 	public void run() {
-		String text = WorkerTextFile.read();
-		System.out.println(text);
+		Printer printer = new ConsolePrinter();
+
+		String text = WorkerTextFile.read("InputText.txt");
+		printer.print(text);
 		Parser parserText = new ParserText();
 		Parser parserParagraph = new ParserParagraph();
-		Parser parserWord = new ParserWord();
-		Item conteiner3 = new ItemConteinerTemp(parserWord, new Item());
-		Item conteiner2 = new ItemConteinerTemp(parserParagraph, conteiner3);
-		Item conteiner1 = new ItemConteinerTemp(parserText, conteiner2);
+		Parser parserSentens = new ParserSentens();
+
+		parserText.setNext(parserParagraph);
+		parserParagraph.setNext(parserSentens);
+		Item conteiner = new ItemConteiner(parserText);
 
 		System.out.println();
-		conteiner1.parsing(text);
+		conteiner.parsing(text);
 		System.out.println();
+		System.out.println();
+		System.out.println(text);
+		System.out.println();
+		System.out.println("TO STRING");
+		printer.print(conteiner);
+		String outputText = conteiner.toString();
+		WorkerTextFile.write(outputText, "OutputText.txt");
 
-		System.out.println(conteiner1);
+		System.out.println(outputText.equals(WorkerTextFile.read("InputText.txt")));
 	}
 
 }

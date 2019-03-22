@@ -1,8 +1,8 @@
 package by.epam.javawebtraining.mitrahovich.task04.model.logic.strategy;
 
-import by.epam.javawebtraining.mitrahovich.task04.model.parser.Parser;
+import by.epam.javawebtraining.mitrahovich.task04.model.entity.ItemConteiner;
 
 public interface Strategy {
 
-	String process(Parser parser, String content);
+	String process(ItemConteiner conteiner);
 }

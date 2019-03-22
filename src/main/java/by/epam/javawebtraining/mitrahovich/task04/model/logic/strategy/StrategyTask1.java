@@ -1,20 +1,17 @@
 package by.epam.javawebtraining.mitrahovich.task04.model.logic.strategy;
 
-import by.epam.javawebtraining.mitrahovich.task04.model.parser.Parser;
+import by.epam.javawebtraining.mitrahovich.task04.model.entity.ItemConteiner;
 import by.epam.javawebtraining.mitrahovich.task04.model.parser.ParserType;
 
-public class Strategy1 implements Strategy {
+public class StrategyTask1 implements Strategy {
 
-	public Strategy1() {
+	public StrategyTask1() {
 
 	}
 
-	public String process(Parser parser, String content) {
+	public String process(ItemConteiner conteiner) {
 		StringBuilder sb = new StringBuilder();
 
-		if (parser.getParserType() == ParserType.PARAGRAPH) {
-
-		}
 		return null;
 	}
 

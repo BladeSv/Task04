@@ -20,4 +20,9 @@ public class PropertiesManager {
 		return rb.getString("input_text");
 	}
 
+	public static String getOutputTextFileName() {
+
+		return rb.getString("output_text");
+	}
+
 }

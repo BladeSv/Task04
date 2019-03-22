@@ -8,6 +8,6 @@ import org.apache.log4j.Logger;
 import by.epam.javawebtraining.mitrahovich.task04.model.logic.strategy.Strategy;
 import by.epam.javawebtraining.mitrahovich.task04.model.parser.Parser;
 
-public class ItemConteinerTest {
+public class ItemConteinerAbstTempTest {
 	
 }
